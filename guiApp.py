@@ -42,10 +42,10 @@ def runApps():
 
 # Function for removing or reseting the saved apps.
 
-def reset(reRun):
+def reset():
 
-    os.remove('opened_apps.txt')
-    reRun.forget()
+    for widget in frame.winfo_children():
+        widget.destroy()
 
 
 # set up the Canvas of the display screen.
@@ -73,7 +73,7 @@ for app in apps:
     label.pack()
 
 reRun = tk.Button(root, text="Reset", padx=10,
-                  pady=5, fg="purple", bg="white", command=lambda: reset(label))
+                  pady=5, fg="purple", bg="white", command=reset)
 reRun.pack(side=RIGHT)
 
 root.mainloop()
