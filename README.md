@@ -19,3 +19,5 @@ Allows the user to only select files that have the .exe file type.
 Opens the path of the app.
 
 Runs the app.
+
+### Creates a file to store the path of each app.
