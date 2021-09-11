@@ -5,6 +5,7 @@ import os
 root = tk.Tk()
 apps = []
 
+# Reads the txt file and saves each app on a different line.
 
 if os.path.isfile('opened_apps.txt'):
     with open('opened_apps.txt', 'r') as f:
@@ -13,7 +14,8 @@ if os.path.isfile('opened_apps.txt'):
 
         apps = [x for x in tempApps if x.strip()]
 
-# Function for adding the apps on the frame.
+
+# Function for adding the apps on the frame connects to the openFile button.
 
 
 def addApp():
@@ -29,7 +31,7 @@ def addApp():
         label = tk.Label(frame, text=app, bg="gray")
         label.pack()
 
-# Function for running the apps.
+# Function for running the apps related to the runApps button.
 
 
 def runApps():
