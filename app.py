@@ -6,12 +6,14 @@ root = tk.Tk()
 apps = []
 
 
-if os.path.isfile('save.txt'):
-    with open('save.txt', 'r') as f:
+if os.path.isfile('opened_apps.txt'):
+    with open('opened_apps.txt', 'r') as f:
         tempApps = f.read()
         tempApps = tempApps.split(',')
 
         apps = [x for x in tempApps if x.strip()]
+
+# Function for adding the apps on the frame.
 
 
 def addApp():
@@ -27,34 +29,41 @@ def addApp():
         label = tk.Label(frame, text=app, bg="gray")
         label.pack()
 
+# Function for running the apps.
+
 
 def runApps():
     for app in apps:
         os.startfile(app)
 
 
-canvas = tk.Canvas(root, height=400, width=400, bg="#263D42")
+# set up the Canvas of the display screen.
+canvas = tk.Canvas(root, height=450, width=450, bg="black")
 canvas.pack()
 
-frame = tk.Frame(root, bg="white")
-frame.place(relwidth=0.8, relheight=0.8, relx=0.1, rely=0.1)
+# set up Frame of the display screen.
+frame = tk.Frame(root, bg="black")
+frame.place(relwidth=1.0, relheight=1.0, relx=0.0, rely=0.0)
 
-openFile = tk.Button(root, text="Open File", padx=10,
-                     pady=5, fg="white", bg="#263D42", command=addApp)
-
+# Initialize the variable for the button openFile.
+openFile = tk.Button(root, text="Open Files", padx=10,
+                     pady=5, fg="white", bg="red", command=addApp)
 openFile.pack()
 
+# Initialize the variable for the button runApps.
 runApps = tk.Button(root, text="Run Apps", padx=10,
-                    pady=5, fg="white", bg="#263D42", command=runApps)
-
+                    pady=5, fg="white", bg="red", command=runApps)
 runApps.pack()
 
+
+# Saves the selected apps for the next-time execution.
 for app in apps:
     label = tk.Label(frame, text=app)
     label.pack()
 
 root.mainloop()
 
-with open('save.txt', 'w') as f:
+# Stores the opened apps in the txt file.
+with open('opened_apps.txt', 'w') as f:
     for app in apps:
         f.write(app + ',')
